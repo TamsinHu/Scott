@@ -5,13 +5,11 @@ import lejos.hardware.port.*;
 import lejos.utility.Delay;
 
 
-public class DriveAvoid 
+public class Hypothesis 
 { 
-   public static void main(String[] args)
+    public static void main(String[] args)
     {
       
-    	
-    
     	
        UltraSonicSensor ultra = new UltraSonicSensor(SensorPort.S4);
        
@@ -29,10 +27,10 @@ public class DriveAvoid
        UnregulatedMotor motorB = new UnregulatedMotor(MotorPort.B);
 
        motorA.setPower(+50);
-       motorB.setPower(+50);
-       //Delay.msDelay(2000);
+       motorB.setPower(-50);
+       Delay.msDelay(2000);
        
-       
+       /*
        // drive waiting for touch sensor or escape key to stop driving.
        while (Button.ESCAPE.isUp()) 
        {   
@@ -58,7 +56,7 @@ public class DriveAvoid
            
            Delay.msDelay(50);
        }
-       
+       */
        // stop motors with brakes on.
        motorA.stop();
        motorB.stop();
