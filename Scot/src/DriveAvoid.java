@@ -40,19 +40,33 @@ public class DriveAvoid
            Lcd.print(6, "range=%.3f", ultra.getRange());
 
            // watch for obstacle.
-           if (ultra.getRange() < .25)
+           if ((ultra.getRange() <= .30) && (ultra.getRange() > .05))
            {
         	  
-               Delay.msDelay(50);
 
                // start rotation around current location.
-               motorA.setPower(-50);
-               motorB.setPower(+50);
-               Delay.msDelay(50);
+               motorA.setPower(-80);
+               motorB.setPower(+80);
+               Delay.msDelay(150);
               
 
                // back to straight driving.
                motorA.setPower(+50);
+               motorB.setPower(+50);
+           }
+        // watch for obstacle.
+           else if ((ultra.getRange() <= .05) || (ultra.getRange() > 2))
+           {
+        	  
+
+               // start rotation around current location.
+               motorA.setPower(-50);
+               motorB.setPower(-50);
+               Delay.msDelay(200);
+              
+
+               // back to straight driving.
+               motorA.setPower(-50);
                motorB.setPower(+50);
            }
            
