@@ -28,7 +28,7 @@ public class Hypothesis2 {
        UnregulatedMotor motorA = new UnregulatedMotor(MotorPort.A);
        UnregulatedMotor motorB = new UnregulatedMotor(MotorPort.B);
 
-       motorA.setPower(+50);
+       motorA.setPower(+51);
        motorB.setPower(+50);
        
        
@@ -42,7 +42,7 @@ public class Hypothesis2 {
            Lcd.print(5, "angle=%d av=%.3f", gyro.getAngle(), gyro.getAngularVelocity());
            float inf_Test = ultra.getRange();
            // watch for obstacle.
-           if ((ultra.getRange() <= .20) && ((!touch1.isTouched())||(!touch2.isTouched())))
+           if ((ultra.getRange() <= .13) && ((!touch1.isTouched())||(!touch2.isTouched())))
            {
         	// Set gyro angle to zero.
                gyro.reset();
@@ -55,7 +55,7 @@ public class Hypothesis2 {
                motorB.setPower(+50);
                
                // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 90  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 75  && Button.ESCAPE.isUp())
                {
                    Lcd.clear(7);
                    Lcd.print(7, "angle=%d", gyro.getAngle());
@@ -72,7 +72,7 @@ public class Hypothesis2 {
                motorB.setPower(-50);
                
                // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 180  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 160  && Button.ESCAPE.isUp())
                {
                    Lcd.clear(7);
                    Lcd.print(7, "angle=%d", gyro.getAngle());
@@ -95,7 +95,7 @@ public class Hypothesis2 {
                    motorB.setPower(+50);
                    
                    // wait for 90 degrees of rotation
-                   while (Math.abs(gyro.getAngle()) < 180  && Button.ESCAPE.isUp())
+                   while (Math.abs(gyro.getAngle()) < 160  && Button.ESCAPE.isUp())
                    {
                        Lcd.clear(7);
                        Lcd.print(7, "angle=%d", gyro.getAngle());
@@ -103,7 +103,7 @@ public class Hypothesis2 {
                }
                
                // back to straight driving.
-               motorA.setPower(+50);
+               motorA.setPower(+51);
                motorB.setPower(+50);
            }
            
@@ -128,7 +128,7 @@ public class Hypothesis2 {
                motorB.setPower(+50);
                
                // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 90  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 75  && Button.ESCAPE.isUp())
                {
 
                    Lcd.clear(7);
@@ -146,7 +146,7 @@ public class Hypothesis2 {
                motorB.setPower(-50);
                
                // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 180  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 160  && Button.ESCAPE.isUp())
                {
  
                    Lcd.clear(7);
@@ -170,7 +170,7 @@ public class Hypothesis2 {
                    motorB.setPower(+50);
                    
                    // wait for 90 degrees of rotation
-                   while (Math.abs(gyro.getAngle()) < 180  && Button.ESCAPE.isUp())
+                   while (Math.abs(gyro.getAngle()) < 160  && Button.ESCAPE.isUp())
                    {
                        Lcd.clear(7);
                        Lcd.print(7, "angle=%d", gyro.getAngle());
@@ -178,7 +178,7 @@ public class Hypothesis2 {
                }
                
                // back to straight driving.
-               motorA.setPower(+50);
+               motorA.setPower(+51);
                motorB.setPower(+50);
        }
        }

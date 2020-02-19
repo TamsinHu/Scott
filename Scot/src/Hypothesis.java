@@ -29,7 +29,7 @@ public class Hypothesis
        UnregulatedMotor motorA = new UnregulatedMotor(MotorPort.A);
        UnregulatedMotor motorB = new UnregulatedMotor(MotorPort.B);
 
-       motorA.setPower(+50);
+       motorA.setPower(+51);
        motorB.setPower(+50);
        
        
@@ -43,29 +43,27 @@ public class Hypothesis
            Lcd.print(5, "angle=%d av=%.3f", gyro.getAngle(), gyro.getAngularVelocity());
            float inf_Test = ultra.getRange();
            // watch for obstacle.
-           if ((ultra.getRange() <= .20) && ((!touch1.isTouched())||(!touch2.isTouched())))
+           if ((ultra.getRange() <= .13) && ((!touch1.isTouched())||(!touch2.isTouched())))
            {
         	// Set gyro angle to zero.
                gyro.reset();
 
                Lcd.clear(7);
                Lcd.print(7, "angle=%d", gyro.getAngle());
-               Delay.msDelay(50);
 
                // start rotation around current location.
                motorA.setPower(-50);
                motorB.setPower(+50);
                
                // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 90  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 75  && Button.ESCAPE.isUp())
                {
                    Lcd.clear(7);
                    Lcd.print(7, "angle=%d", gyro.getAngle());
-                   Delay.msDelay(50);
                }
 
                // back to straight driving.
-               motorA.setPower(+50);
+               motorA.setPower(+51);
                motorB.setPower(+50);
            }
            //Detecting collision
@@ -81,17 +79,15 @@ public class Hypothesis
                motorA.setPower(-50);
                motorB.setPower(+50);
             // wait for 90 degrees of rotation
-               while (Math.abs(gyro.getAngle()) < 90  && Button.ESCAPE.isUp())
+               while (Math.abs(gyro.getAngle()) < 75  && Button.ESCAPE.isUp())
                {
                    Lcd.clear(7);
                    Lcd.print(7, "angle=%d", gyro.getAngle());
-                   Delay.msDelay(50);
                }
-               motorA.setPower(+50);
+               motorA.setPower(+51);
                motorB.setPower(+50);
            }
         	   
-           Delay.msDelay(50);
        }
        
        // stop motors with brakes on.
